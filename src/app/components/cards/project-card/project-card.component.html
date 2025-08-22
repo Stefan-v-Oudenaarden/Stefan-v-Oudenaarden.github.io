@@ -1,0 +1,39 @@
+<div class="bg-orange-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 border border-orange-200">
+  <div class="h-48 bg-gray-100 flex items-center justify-center">
+    <!-- Placeholder image - replace src with actual screenshot -->
+    <img 
+      [src]="project.imagePath"
+      [alt]="project.title + ' screenshot'"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="p-6">
+    <h3 class="text-xl font-semibold text-slate-800 mb-3">
+      {{ project.title }}
+    </h3>
+    <p class="text-slate-600 mb-4 leading-relaxed">
+      {{ project.description }}
+    </p>
+    <div class="flex flex-wrap gap-2 mb-6">
+      @for (tech of project.technologies; track $index) {
+        <span class="px-3 py-1 bg-blue-600 text-white text-sm rounded-full font-medium">
+          {{ tech }}
+        </span>
+      }
+    </div>
+    <div class="flex gap-4">
+      <a
+        [href]="project.demoUrl"
+        class="flex-1 text-center px-4 py-2 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-300 border border-blue-600"
+      >
+        Live Demo
+      </a>
+      <a
+        [href]="project.sourceUrl"
+        class="flex-1 text-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-300"
+      >
+        Source Code
+      </a>
+    </div>
+  </div>
+</div>

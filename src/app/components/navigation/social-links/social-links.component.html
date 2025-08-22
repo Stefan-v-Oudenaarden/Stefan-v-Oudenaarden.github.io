@@ -1,0 +1,17 @@
+<div class="flex justify-center space-x-6 mb-8">
+  @for (link of socialLinks; track $index) {
+    <a
+      [href]="link.url"
+      [target]="link.url.startsWith('mailto:') ? '_self' : '_blank'"
+      class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-xl hover:bg-teal-600 transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl"
+      [title]="link.label"
+      (click)="handleClick(link, $event)"
+    >
+      <img 
+        [src]="link.svgPath" 
+        [alt]="link.label"
+        class="w-6 h-6 invert brightness-0"
+      >
+    </a>
+  }
+</div>
