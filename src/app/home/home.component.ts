@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     { label: 'About', link: '#about' },
     { label: 'Skills', link: '#skills' },
     { label: 'Projects', link: '#projects' },
-    { label: 'Resume', link: 'assets/Resume.pdf', external: true },
+    { label: 'Resume', link: 'assets/resume.pdf', external: true },
   ]);
 
   // Technology showcase
@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit {
       technologies: ['Angular', 'Ionic', 'Typescript', 'Node.js'],
       demoUrl: 'https://stefan-v-oudenaarden.github.io/Silver-Chains/',
       sourceUrl: 'https://github.com/Stefan-v-Oudenaarden/Silver-Chains',
-      imagePath: 'assets/projects/silver-chains/screenshot.png'
+      imagePath: 'assets/projects/silver-chains/screenshot.png',
     },
     {
       title: 'Bonsai',
@@ -129,7 +129,7 @@ export class HomeComponent implements OnInit {
       technologies: ['Blazor WASM', 'Tailwind', 'C#'],
       demoUrl: 'https://stefan-v-oudenaarden.github.io/Bonsai/',
       sourceUrl: 'https://github.com/Stefan-v-Oudenaarden/Bonsai',
-      imagePath: 'assets/projects/bonsai/screenshot.png'
+      imagePath: 'assets/projects/bonsai/screenshot.png',
     },
   ]);
 
@@ -138,7 +138,7 @@ export class HomeComponent implements OnInit {
     { svgPath: 'assets/logos/social/email.svg', url: `mailto:${this.developer().email}`, label: 'Email' },
     { svgPath: 'assets/logos/social/linkedin.svg', url: this.developer().linkedinUrl, label: 'LinkedIn' },
     { svgPath: 'assets/logos/social/github.svg', url: this.developer().githubUrl, label: 'GitHub' },
-    { svgPath: 'assets/logos/social/pdf.svg', url: 'assets/Resume.pdf', label: 'Download Resume' },
+    { svgPath: 'assets/logos/social/pdf.svg', url: 'assets/resume.pdf', label: 'Download Resume' },
   ]);
 
   // About section content
