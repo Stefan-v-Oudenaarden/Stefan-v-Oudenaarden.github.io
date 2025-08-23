@@ -5,7 +5,7 @@ import { SocialLinksComponent } from '../components/navigation/social-links/soci
 import { ProjectCardComponent } from '../components/cards/project-card/project-card.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
-import { Technology } from '../components/ui/tech-badge/tech-badge.interface';
+
 import { Skill } from '../components/cards/skill-card/skill-card.interface';
 import { Project } from '../components/cards/project-card/project-card.interface';
 import { SocialLink } from '../components/navigation/social-links/social-links.interface';
