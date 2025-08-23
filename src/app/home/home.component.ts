@@ -3,21 +3,14 @@ import { TechBadgeComponent } from '../components/ui/tech-badge/tech-badge.compo
 import { SkillCardComponent } from '../components/cards/skill-card/skill-card.component';
 import { SocialLinksComponent } from '../components/navigation/social-links/social-links.component';
 import { ProjectCardComponent } from '../components/cards/project-card/project-card.component';
+import { LanguageSwitcherComponent } from '../components/ui/language-switcher/language-switcher.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { fromEvent } from 'rxjs';
+import { LanguageService } from '../services/language.service';
 
 import { Skill } from '../components/cards/skill-card/skill-card.interface';
 import { Project } from '../components/cards/project-card/project-card.interface';
 import { SocialLink } from '../components/navigation/social-links/social-links.interface';
-
-interface Developer {
-  name: string;
-  title: string;
-  description: string;
-  githubUrl: string;
-  linkedinUrl: string;
-  email: string;
-}
 
 interface NavItem {
   label: string;
@@ -30,24 +23,18 @@ interface NavItem {
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [TechBadgeComponent, SkillCardComponent, SocialLinksComponent, ProjectCardComponent],
+  imports: [TechBadgeComponent, SkillCardComponent, SocialLinksComponent, ProjectCardComponent, LanguageSwitcherComponent],
 })
 export class HomeComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly languageService = inject(LanguageService);
 
   // Signals for reactive state
   protected readonly title = signal('Github-Site');
   protected readonly isScrolled = signal(false);
 
   // Developer information
-  protected readonly developer = signal<Developer>({
-    name: 'Stefan van Oudenaarden',
-    title: 'Full Stack Developer',
-    description: 'Passionate developer creating innovative solutions with modern technologies. I love building scalable applications and exploring new frameworks to solve complex problems.',
-    githubUrl: 'https://github.com/Stefan-v-Oudenaarden',
-    linkedinUrl: 'https://www.linkedin.com/in/stefan-van-oudenaarden/',
-    email: 's.oudenaarden+gh.pages@gmail.com',
-  });
+  protected readonly developer = this.languageService.getDeveloper;
 
   // Navigation items computed from developer info
   protected readonly navItems = computed<NavItem[]>(() => [
@@ -90,48 +77,10 @@ export class HomeComponent implements OnInit {
   ]);
 
   // Skills data
-  protected readonly skills = signal<Skill[]>([
-    {
-      icon: '💻',
-      title: 'Frontend Development',
-      description: 'Building responsive and interactive user interfaces with modern frameworks like Angular, ASP.net and Blazor.',
-    },
-    {
-      icon: '⚙️',
-      title: 'Backend Development',
-      description: 'Developing robust server-side applications with C#, Python and creating RESTful APIs.',
-    },
-    {
-      icon: '✨',
-      title: 'AI Technologies',
-      description: 'Working with state of the art AI solutions through platforms like AWS Bedrock. Responsible AI assisted development. Experienced with creating mult-step AI systems.',
-    },
-    {
-      icon: '🚅',
-      title: 'Rapid Prototyping',
-      description: ' Developing interactive UI prototypes with Angular and Ionic to test ideas and gather feedback early.',
-    },
-  ]);
+  protected readonly skills = this.languageService.getSkills;
 
   // Projects data
-  protected readonly projects = signal<Project[]>([
-    {
-      title: 'Silver Chains',
-      description: 'Silver Chains is a Cyberchef inspired text processing application. It lets you chain simple operations together into complex solutions.',
-      technologies: ['Angular', 'Ionic', 'Typescript', 'Node.js'],
-      demoUrl: 'https://stefan-v-oudenaarden.github.io/Silver-Chains/',
-      sourceUrl: 'https://github.com/Stefan-v-Oudenaarden/Silver-Chains',
-      imagePath: 'assets/projects/silver-chains/screenshot.png',
-    },
-    {
-      title: 'Bonsai',
-      description: 'Bonsai is a series of random text generators.',
-      technologies: ['Blazor WASM', 'Tailwind', 'C#'],
-      demoUrl: 'https://stefan-v-oudenaarden.github.io/Bonsai/',
-      sourceUrl: 'https://github.com/Stefan-v-Oudenaarden/Bonsai',
-      imagePath: 'assets/projects/bonsai/screenshot.png',
-    },
-  ]);
+  protected readonly projects = this.languageService.getProjects;
 
   // Social links computed from developer info
   protected readonly socialLinks = computed<SocialLink[]>(() => [
@@ -142,11 +91,7 @@ export class HomeComponent implements OnInit {
   ]);
 
   // About section content
-  protected readonly aboutContent = signal<string[]>([
-    'Minim magna excepteur pariatur ad. Id occaecat commodo mollit laborum non et ad quis ipsum quis dolore. Culpa sit proident magna quis aliquip laborum occaecat incididunt enim. Anim do velit et ipsum eiusmod. Aliquip laborum ad aliquip quis laboris duis non mollit cillum veniam laborum cillum esse.',
-    'Consectetur laborum cillum id quis voluptate incididunt qui mollit adipisicing ut. Velit aliqua non ad ea veniam ex elit veniam magna laboris voluptate magna. Veniam laboris enim aute proident ex officia. Dolore est aute cillum ad. Amet elit fugiat pariatur ullamco Lorem elit officia laboris nostrud voluptate deserunt non cillum veniam.',
-    'Do cillum tempor est quis aute sint eu ut aliquip culpa exercitation. Mollit cillum ullamco in occaecat qui amet laboris et deserunt ea ipsum. Amet laborum eu ea duis incididunt aute. Nisi esse anim Lorem cupidatat qui amet amet veniam id aute est. Dolore ad laboris ipsum dolore proident officia dolore nisi mollit. Aute sunt dolor commodo laborum voluptate consectetur. Nostrud esse ullamco adipisicing deserunt anim nostrud sint sint nulla et officia ea nisi.',
-  ]);
+  protected readonly aboutContent = this.languageService.getAboutContent;
 
   ngOnInit(): void {
     this.initializeScrollEffects();
@@ -177,5 +122,10 @@ export class HomeComponent implements OnInit {
     } else {
       window.open(link.url, '_blank');
     }
+  }
+
+  protected toggleLanguage(): void {
+    const currentLang = this.languageService.getCurrentLanguage();
+    this.languageService.setCurrentLanguage(currentLang === 'en' ? 'nl' : 'en');
   }
 }
