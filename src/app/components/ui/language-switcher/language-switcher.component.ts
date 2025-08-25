@@ -13,7 +13,7 @@ export class LanguageSwitcherComponent {
   protected readonly currentLanguage = this.languageService.getCurrentLanguage();
 
   protected flag = computed(() => {
-    const language = this.languageService.getCurrentLanguage() === 'en' ? 'nl' : 'gb';
+    const language = this.languageService.getCurrentLanguage() === 'en' ? 'gb' : 'nl';
     return `assets/flags/${language}.svg`;
   });
 

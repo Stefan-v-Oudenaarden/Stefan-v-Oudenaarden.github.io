@@ -19,7 +19,7 @@ export interface Translations {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   private currentLanguage = signal<'en' | 'nl'>('en');
@@ -28,11 +28,12 @@ export class LanguageService {
     en: {
       developer: {
         name: 'Stefan van Oudenaarden',
-        title: 'Full Stack Developer',
-        description: 'Passionate developer creating innovative solutions with modern technologies. I love building scalable applications and exploring new frameworks to solve complex problems.',
+        title: 'Frontend Developer',
+        description:
+          'Frontend Developer who works flexibly, attentively and independently with strong experience in Angular and C# development. Experienced in rapidly developing prototypes and iterative development cycles using Scrum methodology to translate ideas into working solutions.',
         githubUrl: 'https://github.com/Stefan-v-Oudenaarden',
-        linkedinUrl: 'https://www.linkedin.com/in/stefan-van-oudenaarden/',
-        email: 's.oudenaarden+gh.pages@gmail.com',
+        linkedinUrl: 'https://www.linkedin.com/in/s-v-oudenaarden/',
+        email: 's.oudenaarden+gh.en@gmail.com',
       },
       skills: [
         {
@@ -75,46 +76,48 @@ export class LanguageService {
         },
       ],
       aboutContent: [
-        'Minim magna excepteur pariatur ad. Id occaecat commodo mollit laborum non et ad quis ipsum quis dolore. Culpa sit proident magna quis aliquip laborum occaecat incididunt enim. Anim do velit et ipsum eiusmod. Aliquip laborum ad aliquip quis laboris duis non mollit cillum veniam laborum cillum esse.',
-        'Consectetur laborum cillum id quis voluptate incididunt qui mollit adipisicing ut. Velit aliqua non ad ea veniam ex elit veniam magna laboris voluptate magna. Veniam laboris enim aute proident ex officia. Dolore est aute cillum ad. Amet elit fugiat pariatur ullamco Lorem elit officia laboris nostrud voluptate deserunt non cillum veniam.',
-        'Do cillum tempor est quis aute sint eu ut aliquip culpa exercitation. Mollit cillum ullamco in occaecat qui amet laboris et deserunt ea ipsum. Amet laborum eu ea duis incididunt aute. Nisi esse anim Lorem cupidatat qui amet amet veniam id aute est. Dolore ad laboris ipsum dolore proident officia dolore nisi mollit. Aute sunt dolor commodo laborum voluptate consectetur. Nostrud esse ullamco adipisicing deserunt anim nostrud sint sint nulla et officia ea nisi.',
-      ]
+        'I am a Frontend Developer with experience in Angular and C# development. My interest in technology is driven by enjoying the process of translating ideas into working solutions through rapid prototyping and iterative development cycles.',
+        'I have worked on developing multiple web applications, including AI-powered systems, chat applications, document management tools, and audio processing applications. I am comfortable working through the entire development lifecycle, from gathering feedback from internal testers to implementing features, managing PR merges, builds, testing, and production deployments.',
+        'I have practical experience with integrating AI technologies into web applications, particularly through platforms like AWS Bedrock. I adapt well to new technologies and project requirements, and I am comfortable working in Scrum environments. My approach combines structural thinking with complexity management to tackle challenging projects while maintaining code quality and user experience.',
+      ],
     },
     nl: {
       developer: {
         name: 'Stefan van Oudenaarden',
-        title: 'Full Stack Ontwikkelaar',
-        description: 'Passione voor het creëren van innovatieve oplossingen met moderne technologieën. Ik bouw graag schaalbare applicaties en verken nieuwe frameworks om complexe problemen op te lossen.',
+        title: 'Frontend Developer',
+        description:
+          'Frontend Developer die flexibel, aandachtig en zelfstandig werkt met sterke ervaring in Angular en C# development. Ervaring in het snel ontwikkelen van prototypes en iteratieve ontwikkelcycli met behulp van Scrum methodologie om ideeën naar werkende oplossingen te vertalen.',
         githubUrl: 'https://github.com/Stefan-v-Oudenaarden',
-        linkedinUrl: 'https://www.linkedin.com/in/stefan-van-oudenaarden/',
-        email: 's.oudenaarden+gh.pages@gmail.com',
+        linkedinUrl: 'https://www.linkedin.com/in/s-v-oudenaarden/',
+        email: 's.oudenaarden+gh.nl@gmail.com',
       },
       skills: [
         {
           icon: '💻',
-          title: 'Frontend Ontwikkeling',
+          title: 'Frontend Development',
           description: 'Bouwen van responsieve en interactieve gebruikersinterfaces met moderne frameworks zoals Angular, ASP.net en Blazor.',
         },
         {
           icon: '⚙️',
-          title: 'Backend Ontwikkeling',
-          description: 'Ontwikkelen van robuuste server-side applicaties met C#, Python en het maken van RESTful API\'s.',
+          title: 'Backend Development',
+          description: "Ontwikkelen van robuuste server-side applicaties met C#, Python en het maken van RESTful API's.",
         },
         {
           icon: '✨',
-          title: 'AI Technologieën',
-          description: 'Werken met geavanceerde AI-oplossingen via platforms zoals AWS Bedrock. Verantwoordelijke AI-ondersteunde ontwikkeling. Ervaring met het creëren van AI-systemen met meerdere stappen.',
+          title: 'AI Technologies',
+          description:
+            'Werken met geavanceerde AI-oplossingen via platforms zoals AWS Bedrock. Verantwoordelijke AI-ondersteunde ontwikkeling. Ervaring met het creëren van AI-systemen met meerdere stappen.',
         },
         {
           icon: '🚅',
-          title: 'Snel Prototyping',
+          title: 'Rapid Prototyping',
           description: 'Ontwikkelen van interactieve UI-prototypes met Angular en Ionic om ideeën vroeg te testen en feedback te verzamelen.',
         },
       ],
       projects: [
         {
           title: 'Silver Chains',
-          description: 'Silver Chains is een Cyberchef geïnspireerde tekstverwerkingsapplicatie. Het laat je eenvoudige bewerkingen koppelen tot complexe oplossingen.',
+          description: 'Silver Chains is een Cyberchef geïnspireerde tekstverwerkingsapplicatie. Het laat je eenvoudige bewerkingen aan elkaar koppelen tot complexe oplossingen.',
           technologies: ['Angular', 'Ionic', 'Typescript', 'Node.js'],
           demoUrl: 'https://stefan-v-oudenaarden.github.io/Silver-Chains/',
           sourceUrl: 'https://github.com/Stefan-v-Oudenaarden/Silver-Chains',
@@ -130,11 +133,11 @@ export class LanguageService {
         },
       ],
       aboutContent: [
-        'Ik ben een enthousiaste full-stack ontwikkelaar met een passie voor het creëren van innovatieve digitale oplossingen. Mijn reis in de technologie begon met nieuwsgierigheid naar hoe software werkt, en is uitgegroeid tot een carrière waarin ik elke dag nieuwe uitdagingen aanga.',
-        'Mijn expertise ligt in het bouwen van schaalbare webapplicaties met moderne technologieën. Ik geloof in schone code, intuïtieve gebruikerservaringen en continue verbetering. Ik blijf graag op de hoogte van de nieuwste ontwikkelingen in de branche.',
-        'Wat ik het leukste vind aan programmeren is het oplossen van complexe problemen en het zien van hoe mijn werk waarde toevoegt aan eindgebruikers. Buiten mijn werk houd ik mezelf graag bezig met nieuwe technologieën en bijdrage ik aan open-source projecten.',
-      ]
-    }
+        'Ik ben een Frontend Developer met ervaring in Angular en C# development. Mijn interesse in technologie wordt gedreven door het plezier in het proces van het vertalen van ideeën naar werkende oplossingen door middel van rapid prototyping en iteratieve ontwikkelcycli.',
+        'Ik heb gewerkt aan het ontwikkelen van meerdere webapplicaties, waaronder AI-aangedreven systemen, chat applicaties, document management tools en audio processing applicaties. Ik voel me comfortabel bij het werken door de gehele development lifecycle, van het verzamelen van feedback van interne testers tot het implementeren van features, het beheren van PR merges, builds, testing en production deployments.',
+        'Ik heb praktische ervaring met het integreren van AI-technologieën in webapplicaties, met name via platforms zoals AWS Bedrock. Ik pas me goed aan nieuwe technologieën en projectvereisten aan, en ik voel me comfortabel bij het werken in Scrum omgevingen. Mijn aanpak combineert structureel denkvermogen met complexiteitsbeheersing om uitdagende projecten aan te pakken terwijl ik codekwaliteit en gebruikerservaring behoud.',
+      ],
+    },
   };
 
   setCurrentLanguage(lang: 'en' | 'nl') {
