@@ -22,7 +22,28 @@ export interface Translations {
   providedIn: 'root',
 })
 export class LanguageService {
-  private currentLanguage = signal<'en' | 'nl'>('en');
+  private readonly storageKey = 'lang';
+  private currentLanguage = signal<'en' | 'nl'>(
+    this.getInitialLanguage()
+  );
+
+  private getInitialLanguage(): 'en' | 'nl' {
+    // First check localStorage
+    if (typeof localStorage !== 'undefined') {
+      const storedLang = localStorage.getItem(this.storageKey);
+      if (storedLang === 'en' || storedLang === 'nl') {
+        return storedLang;
+      }
+    }
+
+    // Then check browser language
+    if (typeof navigator !== 'undefined') {
+      const browserLang = navigator.language || navigator.languages?.[0];
+      return browserLang?.startsWith('nl') ? 'nl' : 'en';
+    }
+
+    return 'en'; // Final fallback
+  }
 
   private translations: Record<'en' | 'nl', Translations> = {
     en: {
@@ -142,6 +163,9 @@ export class LanguageService {
 
   setCurrentLanguage(lang: 'en' | 'nl') {
     this.currentLanguage.set(lang);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(this.storageKey, lang);
+    }
   }
 
   getCurrentLanguage() {
